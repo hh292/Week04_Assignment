@@ -19,36 +19,37 @@ public function __construct()
 
   $year = array("2012", "396", "300","2000", "1100", "1089");
   echo "The value of \$year: </br>";
-  print_r($year);
+  print_r($year);               // sol 1
+  tag::space();
+  
+  $date_1 = strfun::rep($date);   // sol 2
+  tag::space();
+  
+  strfun::cmp($date,$tar);  // sol 3
+  tag::space();
+  
+  $count = strfun::delimit($date_1); // sol 4 
+  tag::space();
+ 
+  strfun::num_count($date); // sol 5
+  tag::space();
+  
+  strfun::str_len($date); // sol 6
+  tag::space();
+  
+  strfun::ASCII($date); // sol 7
+  tag::space();
+  
+  strfun::last_chr($date,$count); // sol 8
+  tag::space();
 
-  $date_1 = strfun::rep($date);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::cmp($date,$tar);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  $count = strfun::delimit($date_1);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::num_count($date);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::str_len($date);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::ASCII($date);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::last_chr($date,$count);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::an_array($date_1);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::leap_year($year);
-  htmlTags::horizontalRule();
-  echo '</br>';
-  strfun::leap_year_do($year);
+  strfun::an_array($date_1); // sol 9 
+  tag::space();
+  
+  strfun::leap_year($year); // sol 10 A
+  tag::space();
+  
+  strfun::leap_year_do($year); // sol 10 B
 
 }
 
@@ -63,10 +64,10 @@ class strfun{
            {
 
                $date_1 = str_replace('-','/',$date_1);
-               echo"<hr>";
+               //echo"<hr>";
                echo" </br>Solution 2: ";
                echo "</br>Output after replacing --->".$date_1."\r";
-               echo "<hr>";
+               //echo "<hr>";
                return $date_1;
            }
 
@@ -95,7 +96,7 @@ class strfun{
 
                		echo "</br>Output ---- >Oops"."\r";
             	    }
-                echo"<hr>";
+                //echo"<hr>";
    	        }
 
     // 4. Search '/' if more then one '/' delimit with ' '  ...hh292
@@ -127,18 +128,18 @@ class strfun{
               
                  $domain = str_replace('/'," ", $date);
                  echo "</br> After Replace -->".$domain;
-                 echo'<hr>';
+                // echo'<hr>';
             }
 
     //5. Count the number of words in $date     ..hh292
             public static function num_count($date)
             {        
             
-            $domain = str_word_count($date);
-            echo "</br>Solution 5: ";
+                $domain = str_word_count($date);
+                echo "</br>Solution 5: ";
 
-            echo'</br>Number of words --> '.$domain."\r"; 
-            echo '<hr>';
+                echo'</br>Number of words --> '.$domain."\r"; 
+                //echo '<hr>';
             }
 
     //6. Return the length of string      ...hh292
@@ -146,10 +147,10 @@ class strfun{
             public static function str_len($date)
             {        
             
-            $count = strLen($date);
-            echo"Solution 6: ";
-            echo'</br>length of string--> '.$count."\r"; 
-            echo '<hr>';
+                $count = strLen($date);
+				echo"Solution 6: ";
+				echo'</br>length of string--> '.$count."\r"; 
+            //echo '<hr>';
             }
 
     //7. Retrun the ASCII value of first string      ...hh292
@@ -158,15 +159,15 @@ class strfun{
             {
 
             
-            $domain = ord($date);
-            echo "Solution 7: ";
-            echo '</br>Output --->'.$domain."\r";
-            echo '<hr>';
+				$domain = ord($date);
+				echo "Solution 7: ";
+				echo '</br>Output --->'.$domain."\r";
+            //echo '<hr>';
             }        
 
     //8. Return the last 2 character of string     ...hh292
 
-          public static function last_chr($date,$count)
+			public static function last_chr($date,$count)
             {
                 $characters="2";
                 $start = $count - $characters  ;   
@@ -174,36 +175,33 @@ class strfun{
             	echo "Solution 8: ";
                 echo '</br>Input --->'.$date."\r";
             	echo "Output--->".$domain_1."\r";
-             echo '<hr>';
+             //echo '<hr>';
             }        
-
-
-
 
     //9. Break $date into an array and set “separator parameter as "/"   ...hh292  
     
-           public static function an_array($date) 
+			public static function an_array($date) 
+            { 
+				echo 'Solution 9 :';
+				echo '</br>Input --->'.$date."\r";
+				$domain = explode("/", $date);
+			//echo'</br>Output --->'."\r";
+				print_r($domain);
+           //echo '<hr>';
+            }	
 
-           { 
-           echo 'Solution 9 :';
-           echo '</br>Input --->'.$date."\r";
-           $domain = explode("/", $date);
-           //echo'</br>Output --->'."\r";
-           print_r($domain);
-           echo '<hr>';
-           }	
+    //10 A. leap year foreach/switch ...hh292
 
-    //10. leap year  ...hh292
-
-public static function leap_year($year)
-{
-    echo "Solution 10 :</br>";
-	  echo "Using foreach loop </br>"."\r";
-            foreach($year as $yr)
-            {
-            	echo "</br>";
-           // echo "Year --> ".$yr."\r";
-            $yer = ((($yr % 4) == 0) && ((($yr % 100) != 0) || (($yr % 400) == 0)));
+			public static function leap_year($year)
+			{
+				echo "Solution 10 :</br>";
+				echo "Using foreach - Switch loop : </br>"."\r";
+				foreach($year as $yr)
+					{
+						echo "</br>";
+				// echo "Year --> ".$yr."\r";
+            
+			$yer = ((($yr % 4) == 0) && ((($yr % 100) != 0) || (($yr % 400) == 0)));
   
             switch ($yer) {
             	
@@ -219,20 +217,21 @@ public static function leap_year($year)
             }
 
 
-}
+}   //10 B. leap year foreach/switch ...hh292
 
-public static function leap_year_do($year)
-{
+			public static function leap_year_do($year)
+			{
 
- 	    $domain = count($year);
+				$domain = count($year);
+				echo "</br>Using Do while - Switch loop : </br>";
    		
-   		echo "</br>Using Do while loop </br>";
-   		$i = 0;
-   		do {
+					$i = 0;
+				
+				do {
+   
+					$yr = $year[$i];
    			 
-   			 $yr = $year[$i];
-   			 
-			 echo '</br>';
+					echo '</br>';
 			 //echo "Year - ".$yr;
 
    			 //echo "output-->".$domain; 
@@ -257,17 +256,17 @@ public static function leap_year_do($year)
              //echo "do".$domain."\r";
        } while ($i < $domain);
 
+	}
 
 }
+  
+class tag {
 
-}
-class htmlTags {
-
-    static public function horizontalRule() {
-      return '</hr>';
+    static public function space() {
+      echo '<hr>';
+      echo '<br>';
     }
-    
-  }
 
+}
 
 ?>
