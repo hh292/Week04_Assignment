@@ -3,7 +3,6 @@ $obj = new main();
 
 class main{
 
-private $html;
 
 public function __construct()
 {
