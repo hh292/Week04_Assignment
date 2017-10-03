@@ -100,17 +100,34 @@ class strfun{
 
     // 4. Search '/' if more then one '/' delimit with ' '  ...hh292
 
-   	        public static function delimit($date_1)
-            
+   	        public static function delimit($date)
             {
+               echo"</br>Solution 4:";
+               $num = 0;
+               $look = "/";
+               $pst = array();
+                   
+                    for($i = 0; $i<strlen($date); $i++)
+                    {
+                       $pos = strpos($date, $look, $num);
+                         if($pos == $num)
 
-                //echo 'Output'.$date_1;
-                $count = strpos($date_1,'/');
-                echo '</br>Solution 4:';
-                echo'</br> Position-->'.$count;
-                echo '<hr>';
-                return $count;     
-                
+                         {
+                            $pst[] = $pos;
+                         }
+               
+               $num++;
+             
+                    }
+               
+                 foreach ($pst as $place) {
+                 echo '</br> Position found -->' . $place . "</br>";
+            }
+
+              
+                 $domain = str_replace('/'," ", $date);
+                 echo "</br> After Replace -->".$domain;
+                 echo'<hr>';
             }
 
     //5. Count the number of words in $date     ..hh292
